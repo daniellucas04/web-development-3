@@ -35,7 +35,7 @@ export default function Home(){
 		setMaterializeVotes(materializeVotes + 1);
 
 		if ((materializeVotes + 1) === 10){
-			setWinner('materializa');
+			setWinner('materialize');
 		}
 	}
 
