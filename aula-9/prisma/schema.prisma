@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Livro {
+  id Int @id @default (autoincrement())
+  titulo String
+  dataPublicacao DateTime
+
+  id_editora Int?
+  editora Editora? @relation(fields: [id_editora], references: [id])
+}
+
+model Editora {
+  id Int @id @default (autoincrement())
+  titulo String @db.VarChar(100)
+  sigla String @unique
+  cidade String?
+
+  livros Livro[]
+}

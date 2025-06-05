@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Docente {
+  id    Int    @id @default(autoincrement())
+  nome  String
+  email String @unique
+}
